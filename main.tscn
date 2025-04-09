@@ -1,15 +1,56 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8lp5qll3g8yf"]
+[gd_scene load_steps=8 format=3 uid="uid://c8lp5qll3g8yf"]
 
 [ext_resource type="Script" path="res://player_1.gd" id="1_sdpt0"]
+[ext_resource type="Script" path="res://ball.gd" id="2_we26l"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ti6fe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d54jc"]
+size = Vector2(0.95, 0.9875)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_c5t7m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k86vp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u23hm"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Player1" type="Area2D" parent="."]
+position = Vector2(20, 50)
 script = ExtResource("1_sdpt0")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player1"]
-position = Vector2(12, 65)
-scale = Vector2(32, 128)
+scale = Vector2(20, 80)
 texture = SubResource("CanvasTexture_ti6fe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
+scale = Vector2(20, 80)
+shape = SubResource("RectangleShape2D_d54jc")
+
+[node name="Ball" type="Area2D" parent="."]
+position = Vector2(50, 50)
+script = ExtResource("2_we26l")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+scale = Vector2(10, 10)
+texture = SubResource("CanvasTexture_c5t7m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("CircleShape2D_k86vp")
+
+[node name="Walls" type="Area2D" parent="."]
+
+[node name="WallTop" type="StaticBody2D" parent="Walls"]
+position = Vector2(575, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallTop"]
+scale = Vector2(60, 1)
+shape = SubResource("RectangleShape2D_u23hm")
+
+[node name="WallBottom" type="StaticBody2D" parent="Walls"]
+position = Vector2(575, 650)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallBottom"]
+scale = Vector2(60, 1)
+shape = SubResource("RectangleShape2D_u23hm")
