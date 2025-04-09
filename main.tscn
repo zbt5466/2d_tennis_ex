@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8lp5qll3g8yf"]
+
+[ext_resource type="Script" path="res://player_1.gd" id="1_sdpt0"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ti6fe"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Player1" type="Area2D" parent="."]
+script = ExtResource("1_sdpt0")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player1"]
+position = Vector2(12, 65)
+scale = Vector2(32, 128)
+texture = SubResource("CanvasTexture_ti6fe")
